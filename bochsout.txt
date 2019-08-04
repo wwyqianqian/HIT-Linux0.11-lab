@@ -39,7 +39,7 @@
 00000000000i[MEM0 ] rom at 0xfffe0000/131072 ('../bochs/BIOS-bochs-latest')
 00000000000i[MEM0 ] rom at 0xc0000/39424 ('../bochs/vgabios.bin')
 00000000000i[CMOS ] Using local time for initial clock
-00000000000i[CMOS ] Setting initial clock to: Sun Aug  4 11:32:32 2019 (time0=1564918352)
+00000000000i[CMOS ] Setting initial clock to: Sun Aug  4 13:26:00 2019 (time0=1564925160)
 00000000000i[DMA  ] channel 4 used by cascade
 00000000000i[DMA  ] channel 2 used by Floppy Drive
 00000000000i[FDD  ] fd0: '../linux-0.11/Image' ro=0, h=2,t=80,spt=18
@@ -482,26 +482,26 @@
 00022319094i[FDD  ] read() on floppy image returns 0
 00022364049i[FDD  ] read() on floppy image returns 0
 00022409004i[FDD  ] read() on floppy image returns 0
-00032744791p[     ] >>PANIC<< SIGNAL 2 caught
-00032744791i[CPU  ] CPU is in real mode (active)
-00032744791i[CPU  ] CS.d_b = 16 bit
-00032744791i[CPU  ] SS.d_b = 16 bit
-00032744791i[CPU  ] | EAX=0000df0a  EBX=00000003  ECX=00000000  EDX=00001600
-00032744791i[CPU  ] | ESP=0000fef8  EBP=00000077  ESI=ffff005d  EDI=0008009f
-00032744791i[CPU  ] | IOPL=0 id vip vif ac vm rf nt of df if tf sf zf af PF cf
-00032744791i[CPU  ] | SEG selector     base    limit G D
-00032744791i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
-00032744791i[CPU  ] |  CS:9020( 0004| 0|  0) 00090200 0000ffff 0 0
-00032744791i[CPU  ] |  DS:9fc0( 0005| 0|  0) 0009fc00 0000ffff 0 0
-00032744791i[CPU  ] |  SS:9000( 0005| 0|  0) 00090000 0000ffff 0 0
-00032744791i[CPU  ] |  ES:9000( 0005| 0|  0) 00090000 0000ffff 0 0
-00032744791i[CPU  ] |  FS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
-00032744791i[CPU  ] |  GS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
-00032744791i[CPU  ] | EIP=0000fa42 (0000fa42)
-00032744791i[CPU  ] | CR0=0x60000010 CR1=0 CR2=0x00000000
-00032744791i[CPU  ] | CR3=0x00000000 CR4=0x00000000
-00032744791i[CPU  ] >> (invalid)  : FFFF
-00032744791i[CMOS ] Last time is 1564918360 (Sun Aug  4 11:32:40 2019)
-00032744791i[XGUI ] Exit
-00032744791i[     ] restoring default signal behavior
-00032744791i[CTRL ] quit_sim called with exit code 1
+00121907933p[     ] >>PANIC<< SIGNAL 2 caught
+00121907933i[CPU  ] CPU is in real mode (active)
+00121907933i[CPU  ] CS.d_b = 16 bit
+00121907933i[CPU  ] SS.d_b = 16 bit
+00121907933i[CPU  ] | EAX=00000e30  EBX=00000007  ECX=00000000  EDX=00001800
+00121907933i[CPU  ] | ESP=0000fffe  EBP=0000010a  ESI=ffff005d  EDI=000800a0
+00121907933i[CPU  ] | IOPL=0 id vip vif ac vm RF nt OF df if tf SF zf af PF cf
+00121907933i[CPU  ] | SEG selector     base    limit G D
+00121907933i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00121907933i[CPU  ] |  CS:9020( 0004| 0|  0) 00090200 0000ffff 0 0
+00121907933i[CPU  ] |  DS:9000( 0005| 0|  0) 00090000 0000ffff 0 0
+00121907933i[CPU  ] |  SS:9000( 0005| 0|  0) 00090000 0000ffff 0 0
+00121907933i[CPU  ] |  ES:9020( 0005| 0|  0) 00090200 0000ffff 0 0
+00121907933i[CPU  ] |  FS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
+00121907933i[CPU  ] |  GS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
+00121907933i[CPU  ] | EIP=0000fa42 (0000fa42)
+00121907933i[CPU  ] | CR0=0x60000010 CR1=0 CR2=0x00000000
+00121907933i[CPU  ] | CR3=0x00000000 CR4=0x00000000
+00121907933i[CPU  ] >> (invalid)  : FFFF
+00121907933i[CMOS ] Last time is 1564925190 (Sun Aug  4 13:26:30 2019)
+00121907933i[XGUI ] Exit
+00121907933i[     ] restoring default signal behavior
+00121907933i[CTRL ] quit_sim called with exit code 1

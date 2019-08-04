@@ -98,13 +98,83 @@ start:
 	mov	cx,#0x10
 	rep
 	movsb
+!!!!==================================!!!!
+	mov	ax,#SETUPSEG
+	mov 	ds,ax
+	mov	es,ax
 
+!print cursor position
+	mov	ah,#0x03
+	xor	bh,bh
+	int	0x10
+	mov 	cx,#18
+	mov	bx,#0x0007
+	mov	bp,#msg_cursor
+	mov	ax,#0x1301
+	int	0x10
+	mov	ax,#INITSEG
+	mov	ds,ax
+	mov	dx,[0]
+	mov	cx,#4
+
+print_digit1:
+	rol	dx,#4
+	mov	ax,#0xe0f
+	and	al,dl
+	add	al,#0x30
+	cmp	al,#0x3a
+	jl	outp1
+	add	al,#0x07
+outp1:
+	int	0x10
+	loop	print_digit1
+	ret
+
+!print memory size
+	mov	ah,#0x03
+	xor	bh,bh
+	int 	0x10
+	mov 	cx,#14
+	mov	bx,#0x0007
+	mov	bp,#msg_memory
+	mov	ax,#0x1301
+	int	0x10
+	mov	ax,#INITSEG
+	mov	ds,ax
+	mov	dx,[2]
+	mov	cx,#4
+
+print_digit2:
+	rol	dx,#4
+	mov	ax,#0xe0f
+	and	al,dl
+	add 	al,#0x30
+	cmp	al,#0x3a
+	jl	outp2
+	add	al,#0x07
+outp2:
+	int	0x10
+	loop	print_digit2
+
+print_nl:
+	mov	ax,#0xe0d
+	int	0x10
+	mov	al,#0xa
+	int 	0x10
+	ret
+	
+!!!!==================================!!!!
 
 msg2:
 	.byte	13,10
 	.ascii	"NOW we are in SETUP"
 	.byte   13,10,13,10	
-
+msg_cursor:
+	.byte	13,10
+	.ascii "Cursor position:"
+msg_memory:
+	.byte   13,10
+	.ascii "Memory size:"
 .text
 endtext:
 .data
