@@ -114,8 +114,8 @@ start:
 	int	0x10
 	mov	ax,#INITSEG
 	mov	ds,ax
+	mov 	cx,#4
 	mov	dx,[0]
-	mov	cx,#4
 
 print_digit1:
 	rol	dx,#4
@@ -128,7 +128,6 @@ print_digit1:
 outp1:
 	int	0x10
 	loop	print_digit1
-	ret
 
 !print memory size
 	mov	ah,#0x03
@@ -141,8 +140,8 @@ outp1:
 	int	0x10
 	mov	ax,#INITSEG
 	mov	ds,ax
-	mov	dx,[2]
 	mov	cx,#4
+	mov	dx,[2]
 
 print_digit2:
 	rol	dx,#4
@@ -161,7 +160,6 @@ print_nl:
 	int	0x10
 	mov	al,#0xa
 	int 	0x10
-	ret
 	
 !!!!==================================!!!!
 
