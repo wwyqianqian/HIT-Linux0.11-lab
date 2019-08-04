@@ -1,5 +1,5 @@
 SETUPLEN=2
-SETUPSEG=0x07e0
+SETUPSEG=0x9020
 
 entry _start
 _start:
