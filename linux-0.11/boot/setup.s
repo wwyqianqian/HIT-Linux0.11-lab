@@ -155,6 +155,42 @@ outp2:
 	int	0x10
 	loop	print_digit2
 
+!add KB
+	mov	ah,#0x03
+	xor	bh,bh
+	int	0x10
+	mov	cx,#2
+	mov	bx,#0x0007
+	mov	bp,#msg_kb
+	mov	ax,#0x1301
+	int	0x10
+
+!print vga config parameter:
+	mov	ah,#0x03
+	xor	bh,bh
+	int	0x10
+	mov	cx,#15
+	mov 	bx,#0x0007
+	mov	bp,#msg_frameBuffer
+	mov	ax,#0x1301
+	int	0x10
+	mov	ax,#INITSEG
+	mov	ds,ax
+	mov	cx,#4
+	mov	dx,[10]
+
+print_digit3:
+	rol	dx,#4
+	mov	ax,#0xe0f
+	and	al,dl
+	add	al,#0x30
+	cmp	al,#0x3a
+	jl	outp3
+	add	al,#0x07
+outp3:
+	int	0x10
+	loop	print_digit3
+
 print_nl:
 	mov	ax,#0xe0d
 	int	0x10
@@ -173,6 +209,11 @@ msg_cursor:
 msg_memory:
 	.byte   13,10
 	.ascii "Memory size:"
+msg_kb:
+	.ascii "KB"
+msg_frameBuffer:
+	.byte	13,10
+	.ascii	"Frame Buffer:"
 .text
 endtext:
 .data
