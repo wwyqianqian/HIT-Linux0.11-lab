@@ -29,9 +29,9 @@
     ![lab1](./pics/lab1.png)
 ---
 
-### lab2
+### lab2 
 
-此次实验的基本内容是：在 Linux 0.11 上添加两个系统调用，并编写两个简单的应用程序测试它们。
+此次实验的基本内容是：在 Linux 0.11 上添加两个系统调用，并编写两个简单的应用程序测试它们。[本地实现代码](https://github.com/wwyqianqian/HIT-Linux0.11-lab/commit/f98e098ea1240143072c074a5f96df89aba8d69f) [挂载后 bochs 完整环境代码](https://github.com/wwyqianqian/HIT-Linux0.11-lab/commit/ac0b788e0d878ee2370a797666bffecad6a66e42)
 
 * `iam()`
 
@@ -52,12 +52,37 @@
   ```
   
   它将内核中由 `iam()` 保存的名字拷贝到 name 指向的用户地址空间中，同时确保不会对 `name` 越界访存（`name` 的大小由 `size` 说明）。返回值是拷贝的字符数。如果 `size` 小于需要的空间，则返回“-1”，并置 errno 为 EINVAL。也是在 `kernal/who.c` 中实现。
+  
+* 编译内核 挂载虚拟机
+```
+$ cd linux-0.11
+$ make all
+$ cd ..
+$ sudo ./mount-hdc
+$ cp linux-0.11/include/unistd.h hdc/usr/include
+$ cp linux-0.11/include/linux/sys.h hdc/usr/include/linux
+$ vim hdc/usr/root/iam.c
+$ vim hdc/usr/root/whoami.c
+$ sudo umount hdc
+$ ./run
+```
 
 * 测试程序
 
 运行添加过新系统调用的 Linux 0.11，在其环境下编写两个测试程序 iam.c 和 whoami.c。最终的运行结果是：
 ```
-$ ./iam lizhijun
+$ gcc -o testlab2 testlab2.c
+$ gcc -o iam iam.c -Wall
+$ gcc -o whoami whoami.c -Wall
+$ ./iam qianqian
 $ ./whoami	
-lizhijun 
+qianqian
+$ ./testlab2.c 
+$ ./testlab2.sh
 ```
+
+* 取消挂载后测试截图
+  ![lab2](pics/lab2.png)
+
+---
+
