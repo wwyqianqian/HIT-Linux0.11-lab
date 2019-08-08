@@ -1,10 +1,14 @@
-# HIT-Linux0.11-lab
+# HIT-Linux0.11-lab-1and2
+
+* 哈工大操作系统实验系列连载：</br>
+    * [本篇 lab1 lab2](https://github.com/wwyqianqian/HIT-Linux0.11-lab-1and2)
+    * [lab3](https://github.com/wwyqianqian/HIT-Linux0.11-lab3)
 
 ### lab1
 
 * 改写 `bootsect.s` 主要完成如下功能：[实现代码](https://github.com/wwyqianqian/HIT-Linux0.11-lab/commit/0b35a50474be0b159b4e6dd597f01982dcf2e181)
   * bootsect.s 能在屏幕上打印一段提示信息“XXX is booting...”，其中 XXX 是你给自己的操作系统起的名字，例如 LZJos、Sunix 等。
-  * Run 
+  * Run
     ```
     $ cd ~/oslab/linux-0.11/boot/
     $ as86 -0 -a -o bootsect.o bootsect.s
@@ -29,7 +33,7 @@
     ![lab1](./pics/lab1.png)
 ---
 
-### lab2 
+### lab2
 
 此次实验的基本内容是：在 Linux 0.11 上添加两个系统调用，并编写两个简单的应用程序测试它们。[本地实现代码](https://github.com/wwyqianqian/HIT-Linux0.11-lab/commit/f98e098ea1240143072c074a5f96df89aba8d69f) [挂载后 bochs 完整环境代码](https://github.com/wwyqianqian/HIT-Linux0.11-lab/commit/ac0b788e0d878ee2370a797666bffecad6a66e42)
 
@@ -46,13 +50,13 @@
 * `whoami()`
 
   第二个系统调用是 whoami()，其原型为：
-  
+
   ```
   int whoami(char* name, unsigned int size);
   ```
-  
+
   它将内核中由 `iam()` 保存的名字拷贝到 name 指向的用户地址空间中，同时确保不会对 `name` 越界访存（`name` 的大小由 `size` 说明）。返回值是拷贝的字符数。如果 `size` 小于需要的空间，则返回“-1”，并置 errno 为 EINVAL。也是在 `kernal/who.c` 中实现。
-  
+
 * 编译内核 挂载虚拟机
 ```
 $ cd linux-0.11
@@ -75,9 +79,9 @@ $ gcc -o testlab2 testlab2.c
 $ gcc -o iam iam.c -Wall
 $ gcc -o whoami whoami.c -Wall
 $ ./iam qianqian
-$ ./whoami	
+$ ./whoami
 qianqian
-$ ./testlab2.c 
+$ ./testlab2.c
 $ ./testlab2.sh
 ```
 
